@@ -2,7 +2,7 @@ const facts = [
   { label: "Berbasis di", value: "Depok, Jawa Barat" },
   { label: "Melayani", value: "Seluruh Indonesia, online" },
   { label: "Format file", value: "PNG · JPG · PDF, siap cetak" },
-  { label: "Konsultasi", value: "Bayar" },
+  { label: "Konsultasi", value: "Gratis sebelum order" },
 ];
 
 export default function About() {
