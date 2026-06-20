@@ -15,7 +15,7 @@ export default function Nav() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <a href="#beranda" className="font-display text-lg font-bold tracking-tight text-ink">
           {siteConfig.name}
         </a>
@@ -42,7 +42,7 @@ export default function Nav() {
         <button
           aria-label="Buka menu"
           aria-expanded={open}
-          className="md:hidden"
+          className="-mr-2 p-2 md:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           <div className="flex w-6 flex-col gap-1.5">
@@ -54,13 +54,13 @@ export default function Nav() {
       </div>
 
       {open && (
-        <nav className="flex flex-col gap-1 border-t border-line bg-paper px-6 py-4 md:hidden">
+        <nav className="flex flex-col gap-1 border-t border-line bg-paper px-4 py-4 sm:px-6 md:hidden">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="py-2 font-mono text-sm text-ink-soft"
+              className="py-3 font-mono text-sm text-ink-soft"
             >
               {link.label}
             </a>
