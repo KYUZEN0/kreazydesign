@@ -16,14 +16,9 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-import Image from "next/image";
-// ...
-<a href="#beranda" className="flex items-center gap-2">
-  <Image src="/logo.png" alt="Kreazy.Design" width={32} height={32} className="rounded-full" />
-  <span className="font-display text-lg font-bold tracking-tight text-ink">
-    {siteConfig.name}
-  </span>
-</a>
+        <a href="#beranda" className="font-display text-lg font-bold tracking-tight text-ink">
+          {siteConfig.name}
+        </a>
 
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
