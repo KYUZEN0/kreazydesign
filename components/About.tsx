@@ -24,7 +24,7 @@ export default function About() {
             akhir siap pakai.
           </p>
           <p className="mt-4 text-base leading-relaxed text-ink-soft">
-            Bukan template generik — setiap desain disesuaikan dengan
+            Setiap desain disesuaikan dengan
             karakter dan kebutuhan kamu, baik untuk feed Instagram harian
             maupun spanduk acara yang dilihat dari kejauhan.
           </p>
