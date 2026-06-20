@@ -181,31 +181,7 @@ export default function OrderForm() {
               />
             </Field>
           </div>
-
-          <div className="mt-5">
-            <Field label="Referensi (opsional)" as="div">
-              <label
-                htmlFor="reference-upload"
-                className="flex cursor-pointer items-center justify-between gap-3 rounded-xl border border-dashed border-line bg-paper px-4 py-3.5 text-sm text-ink-soft transition-colors hover:border-ink/40"
-              >
-                <span className="truncate">
-                  {fileName || "Upload gambar atau PDF referensi"}
-                </span>
-                <span className="flex-shrink-0 rounded-full border border-ink/20 px-3 py-1 font-mono text-xs text-ink">
-                  Pilih file
-                </span>
               </label>
-              <input
-                id="reference-upload"
-                name="reference"
-                type="file"
-                accept="image/png,image/jpeg,image/webp,application/pdf"
-                onChange={handleFileChange}
-                className="hidden"
-              />
-              <p className="mt-1.5 font-mono text-[11px] text-ink-soft">
-                PNG, JPG, WEBP, atau PDF — maks {MAX_FILE_MB}MB
-              </p>
             </Field>
           </div>
 
