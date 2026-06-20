@@ -71,7 +71,7 @@ export default function OrderForm() {
   }
 
   return (
-    <section id="order" className="px-6 py-20 md:py-28">
+    <section id="order" className="px-4 py-14 sm:px-6 sm:py-20 md:py-28">
       <div className="mx-auto max-w-2xl">
         <p className="text-center font-mono text-xs uppercase tracking-[0.2em] text-ink-soft">
           Konsultasi dulu, gratis kok
@@ -86,7 +86,7 @@ export default function OrderForm() {
 
         <form
           onSubmit={handleSubmit}
-          className="cut-line mt-10 rounded-b-2xl border border-line bg-surface p-7 md:p-9"
+          className="cut-line mt-10 rounded-b-2xl border border-line bg-surface p-5 sm:p-7 md:p-9"
         >
           {/* Honeypot field, hidden from real users */}
           <input
@@ -179,8 +179,8 @@ export default function OrderForm() {
           width: 100%;
           border: 1px solid #e2e0d8;
           border-radius: 0.75rem;
-          padding: 0.7rem 0.9rem;
-          font-size: 0.9rem;
+          padding: 0.8rem 0.9rem;
+          font-size: 1rem;
           background: #fff;
           color: #14161a;
         }
