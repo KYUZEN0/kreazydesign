@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Kreazy.Design",
   tagline: "Jasa Desain Grafis",
   // Ganti dengan nomor WhatsApp bisnis kamu, format: 62xxxxxxxxxx (tanpa + atau 0 di depan)
-  whatsappNumber: "6281234567890",
+  whatsappNumber: "6285712605291",
   instagram: "https://instagram.com/kreazy.design",
 };
 
