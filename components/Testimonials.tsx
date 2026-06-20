@@ -2,7 +2,7 @@ import { testimonials } from "@/lib/content";
 
 export default function Testimonials() {
   return (
-    <section id="testimoni" className="px-6 py-20 md:py-28">
+    <section id="testimoni" className="px-4 py-14 sm:px-6 sm:py-20 md:py-28">
       <div className="mx-auto max-w-6xl">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-soft">
           Testimoni
