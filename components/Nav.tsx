@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { siteConfig } from "@/lib/content";
 
 const links = [
@@ -16,8 +17,18 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <a href="#beranda" className="font-display text-lg font-bold tracking-tight text-ink">
-          {siteConfig.name}
+        <a href="#beranda" className="flex items-center gap-2.5">
+          <Image
+            src="/logo.png"
+            alt="Kreazy.Design"
+            width={36}
+            height={24}
+            className="h-7 w-auto"
+            priority
+          />
+          <span className="font-display text-lg font-bold tracking-tight text-ink">
+            {siteConfig.name}
+          </span>
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
