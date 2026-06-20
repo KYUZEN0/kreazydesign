@@ -2,7 +2,7 @@ import { services } from "@/lib/content";
 
 export default function Services() {
   return (
-    <section id="layanan" className="px-6 py-20 md:py-28">
+    <section id="layanan" className="px-4 py-14 sm:px-6 sm:py-20 md:py-28">
       <div className="mx-auto max-w-6xl">
         <div className="flex items-end justify-between gap-6">
           <div>
