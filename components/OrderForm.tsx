@@ -5,28 +5,9 @@ import { services } from "@/lib/content";
 
 type Status = "idle" | "submitting" | "error";
 
-const MAX_FILE_MB = 4;
-
 export default function OrderForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
-  const [fileName, setFileName] = useState("");
-
-  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) {
-      setFileName("");
-      return;
-    }
-    if (file.size > MAX_FILE_MB * 1024 * 1024) {
-      setErrorMsg(`Ukuran file referensi maksimal ${MAX_FILE_MB}MB.`);
-      e.target.value = "";
-      setFileName("");
-      return;
-    }
-    setErrorMsg("");
-    setFileName(file.name);
-  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -42,18 +23,19 @@ export default function OrderForm() {
       return;
     }
 
-    const namePayload = String(data.get("name") || "");
-    const phonePayload = String(data.get("phone") || "");
-    const servicePayload = String(data.get("service") || "");
-    const detailsPayload = String(data.get("details") || "");
-    const deadlinePayload = String(data.get("deadline") || "");
+    const payload = {
+      name: String(data.get("name") || ""),
+      phone: String(data.get("phone") || ""),
+      service: String(data.get("service") || ""),
+      details: String(data.get("details") || ""),
+      deadline: String(data.get("deadline") || ""),
+    };
 
     try {
-      // FormData (data) sudah berisi semua field termasuk file "reference"
-      // dari elemen <input type="file">, jadi tinggal kirim apa adanya.
       const res = await fetch("/api/order", {
         method: "POST",
-        body: data,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
 
       const result = await res.json();
@@ -67,26 +49,20 @@ export default function OrderForm() {
       // Order tersimpan di server. Lanjutkan ke WhatsApp dengan ringkasan pesanan.
       const waNumber = result.whatsappNumber;
       const serviceLabel =
-        services.find((s) => s.id === servicePayload)?.title || servicePayload;
+        services.find((s) => s.id === payload.service)?.title || payload.service;
 
-      const messageLines = [
+      const message = [
         `Halo Kreazy.Design, saya ingin order:`,
         ``,
-        `Nama: ${namePayload}`,
+        `Nama: ${payload.name}`,
         `Layanan: ${serviceLabel}`,
-        `Deadline: ${deadlinePayload || "-"}`,
-        `Detail kebutuhan: ${detailsPayload}`,
-      ];
+        `Deadline: ${payload.deadline || "-"}`,
+        `Detail kebutuhan: ${payload.details}`,
+        ``,
+        `(Order ID: ${result.orderId})`,
+      ].join("\n");
 
-      if (result.referenceUrl) {
-        messageLines.push(``, `File referensi: ${result.referenceUrl}`);
-      }
-
-      messageLines.push(``, `(Order ID: ${result.orderId})`);
-
-      const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(
-        messageLines.join("\n")
-      )}`;
+      const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
       window.location.href = waUrl;
     } catch (err) {
       setErrorMsg("Terjadi kesalahan jaringan. Coba lagi ya.");
@@ -181,9 +157,6 @@ export default function OrderForm() {
               />
             </Field>
           </div>
-              </label>
-            </Field>
-          </div>
 
           {status === "error" && (
             <p className="mt-4 font-mono text-sm text-red-600">{errorMsg}</p>
@@ -223,19 +196,16 @@ export default function OrderForm() {
 function Field({
   label,
   children,
-  as = "label",
 }: {
   label: string;
   children: React.ReactNode;
-  as?: "label" | "div";
 }) {
-  const Wrapper = as;
   return (
-    <Wrapper className="block">
+    <label className="block">
       <span className="mb-1.5 block font-mono text-[11px] uppercase tracking-wide text-ink-soft">
         {label}
       </span>
       {children}
-    </Wrapper>
+    </label>
   );
 }
