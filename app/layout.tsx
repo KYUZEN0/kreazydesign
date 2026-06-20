@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -27,6 +27,12 @@ export const metadata: Metadata = {
   title: "Kreazy.Design — Jasa Desain Grafis, Harga Bersahabat",
   description:
     "Logo, poster, banner, konten sosial media, kartu nama, dan kebutuhan desain lainnya untuk usaha, organisasi, komunitas, acara, dan sekolah. Konsultasi gratis, harga ramah di kantong.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#F7F6F2",
 };
 
 export default function RootLayout({
