@@ -7,7 +7,7 @@ const facts = [
 
 export default function About() {
   return (
-    <section id="tentang" className="px-6 py-20 md:py-28">
+    <section id="tentang" className="px-4 py-14 sm:px-6 sm:py-20 md:py-28">
       <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-[1.1fr_0.9fr] md:gap-16">
         <div>
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-ink-soft">
